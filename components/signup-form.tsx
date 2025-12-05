@@ -56,6 +56,7 @@ export function SignupForm({form, onSubmit, isLoading, ...props}: SignupFormProp
                 placeholder="m@example.com"
                 required
               />
+              {errors.email?.message && (<p className="text-sm text-red-500">{errors.email.message as string}</p>)}
               <FieldDescription>
                 We&apos;ll use this to contact you. We will not share your email
                 with anyone else.
@@ -64,13 +65,12 @@ export function SignupForm({form, onSubmit, isLoading, ...props}: SignupFormProp
             <Field>
               <FieldLabel htmlFor="password">Password</FieldLabel>
               <Input {...register("password")} id="password" type="password" required />
-              <FieldDescription>
-                Must be at least 8 characters long.
-              </FieldDescription>
+              {errors.password?.message && (<p className="text-xs text-red-500">{errors.password.message as string}</p>)}
+            
             </Field>
             <FieldGroup>
               <Field>
-                <Button type="submit" disabled={isLoading}>{isLoading ? "Creating Account ..." : "Create Account"}</Button>
+                <Button type="submit" className="cursor-pointer" disabled={isLoading}>{isLoading ? "Creating Account ..." : "Create Account"}</Button>
                 
                 <FieldDescription className="px-6 text-center">
                   Already have an account? <Link href="/auth/login">Sign in</Link>

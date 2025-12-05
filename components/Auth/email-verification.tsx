@@ -1,61 +1,94 @@
-"use client"
+"use client";
 
-import { BetterAuthActionButton } from "@/components/Auth/better-auth-action-button"
-import { authClient } from "@/lib/auth-client"
-import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
+import { BetterAuthActionButton } from "@/components/Auth/better-auth-action-button";
+import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "../ui/button";
+import { toast } from "react-toastify";
 
-export function EmailVerification({ email }: { email: string }) {
-  const [timeToNextResend, setTimeToNextResend] = useState(30)
-  const interval = useRef<NodeJS.Timeout>(undefined)
+export function EmailVerification({
+  email,
+  setShowEmailVerification,
+  sendInitialEmail = false,
+}: {
+  email: string;
+  setShowEmailVerification: any;
+  sendInitialEmail?: boolean;
+}) {
+  const [timeToNextResend, setTimeToNextResend] = useState(30);
+  const interval = useRef<NodeJS.Timeout>(undefined);
+  const [emailD, setEmail] = useState(email);
 
   useEffect(() => {
-    startEmailVerificationCountdown()
-  }, [])
+    startEmailVerificationCountdown();
+    if (sendInitialEmail) {
+      handleResend();
+    }
+    console.log("From Email Verification", email);
+  }, []);
 
-  function startEmailVerificationCountdown(time = 30) {
-    setTimeToNextResend(time)
+  const handleResend = async () => {
+    try {
+      console.log("Resending to email:", emailD);
+      const { error } = await authClient.sendVerificationEmail({
+        email: emailD,
+        callbackURL: "localhost:3000/auth/login",
+      });
+      if (error) {
+        throw toast.error(error.message);
+      } else {
+        toast.success("Verification email sent!");
+      }
+      startEmailVerificationCountdown();
+    } catch (error) {
+      console.error("Error resending verification email:", error);
+      toast.error("Failed to resend verification email. Please try again.");
+    }
+  };
 
-    clearInterval(interval.current)
+  function startEmailVerificationCountdown(time = 5) {
+    setTimeToNextResend(time);
+
+    clearInterval(interval.current);
     interval.current = setInterval(() => {
-      setTimeToNextResend(t => {
-        const newT = t - 1
+      setTimeToNextResend((t) => {
+        const newT = t - 1;
 
         if (newT <= 0) {
-          clearInterval(interval.current)
-          return 0
+          clearInterval(interval.current);
+          return 0;
         }
-        return newT
-      })
-    }, 1000)
+        return newT;
+      });
+    }, 1000);
   }
 
   return (
-    <div className="space-y-4 flex flex-col w-fit mx-auto mt-20 bg-gray-400 p-5 rounded-2xl ">
-      <p className="text-sm text-black mt-2 ">
+    <div className="space-y-4 flex flex-col w-fit mx-auto bg-gray-700/90 p-5 rounded-2xl ">
+      <p className="text-sm text-white mt-2 ">
         We sent you a verification link. Please check your email and click the
         link to verify your account.
       </p>
 
-      <BetterAuthActionButton
+      <Button
+        onClick={handleResend}
+        disabled={timeToNextResend > 0}
         variant="outline"
         className="w-full cursor-pointer"
-        successMessage="Verification email sent!"
-        disabled={timeToNextResend > 0}
-        action={() => {
-          startEmailVerificationCountdown()
-          return authClient.sendVerificationEmail({
-            email,
-            callbackURL: "/",
-          })
-        }}
       >
         {timeToNextResend > 0
           ? `Resend Email (${timeToNextResend})`
           : "Resend Email"}
-      </BetterAuthActionButton>
+      </Button>
 
-      <Link href="/auth/login" className="text-center text-sm text-gray-800">Go back to Login</Link>
+      <Link
+        href="/auth/login"
+        onClick={() => setShowEmailVerification(false)}
+        className="text-center text-sm text-white"
+      >
+        Go to Login
+      </Link>
     </div>
-  )
+  );
 }

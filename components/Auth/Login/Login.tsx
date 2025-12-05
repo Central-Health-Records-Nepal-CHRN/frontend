@@ -7,6 +7,8 @@ import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 import { Login1 } from "@/components/login1";
+import { EmailVerification } from "../email-verification";
+import { ForgotPassword } from "../ForgotPassword/ForgotPassword";
 
 const FormSchema = z
   .object({
@@ -47,6 +49,8 @@ const FormSchema = z
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
+  const [showEmailVerification, setShowEmailVerification] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -73,6 +77,9 @@ export default function Login() {
             redirect("/dashboard");
           },
           onError: (ctx) => {
+            if(ctx.error.code === "EMAIL_NOT_VERIFIED") {
+              setShowEmailVerification(true)
+            }
             toast.error(ctx.error.message);
           },
         }
@@ -84,10 +91,21 @@ export default function Login() {
   };
 
   return (
+    <>
+    {!showEmailVerification && !showForgotPassword &&
     <Login1
-      form={form}
-      onSubmit={form.handleSubmit(onSubmit)}
-      isLoading={isLoading}
+    setShowForgotPassword={setShowForgotPassword}
+    form={form}
+    onSubmit={form.handleSubmit(onSubmit)}
+    isLoading={isLoading}
     />
+  }
+  <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+    {showEmailVerification && <EmailVerification sendInitialEmail={true} setShowEmailVerification={setShowEmailVerification} email={form.getValues("email")} />}
+    {showForgotPassword &&   <ForgotPassword openSignInTab={() => setShowForgotPassword(false)} />}
+    </div>
+
+    
+    </>
   );
 }

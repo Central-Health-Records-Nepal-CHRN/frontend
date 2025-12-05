@@ -80,7 +80,7 @@ const FormSchema = z
 
 export default function Register() {
   const [isLoading, setIsLoading] = useState(false);
-  const [showEmailVerification, setShowEmailVerification] = useState(true);
+  const [showEmailVerification, setShowEmailVerification] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -123,9 +123,11 @@ export default function Register() {
       );
 
       if (error) {
-        toast.error("Something went wrong, Try Again!");
+        toast.error(error.message);
+      } else {
+        toast.success("Registered Successfully!");
       }
-      toast.success("Registered Successfully!");
+      
       form.reset();
     } finally {
       setIsLoading(false);
@@ -133,14 +135,16 @@ export default function Register() {
   };
 
   return (
-    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-      <div className="w-full max-w-sm">
+    <div className="flex bg-muted min-h-svh w-full items-center justify-center p-6 md:p-10">
+      <div className={`${showEmailVerification ? "hidden" : "block"} w-full max-w-sm`}>
         <SignupForm
           form={form}
           onSubmit={form.handleSubmit(onSubmit)}
           isLoading={isLoading}
         />
       </div>
+
+      {showEmailVerification && <EmailVerification setShowEmailVerification={setShowEmailVerification} email={form.getValues("email")} />}
     </div>
   );
 }

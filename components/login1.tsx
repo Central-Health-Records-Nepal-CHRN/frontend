@@ -6,6 +6,7 @@ import { UseFormReturn } from "react-hook-form";
 interface Login1Props {
   form: UseFormReturn<any>;
   onSubmit?: () => void;
+  setShowForgotPassword?: any;
   isLoading?: boolean;
   heading?: string;
   logo?: {
@@ -23,6 +24,7 @@ interface Login1Props {
 const Login1 = ({
   form,
   onSubmit,
+  setShowForgotPassword,
   isLoading,
   heading = "Login",
   logo = {
@@ -41,14 +43,9 @@ const Login1 = ({
       <div className="flex h-full items-center justify-center">
         {/* Logo */}
         <div className="flex flex-col items-center gap-6 lg:justify-start">
-          <a href={logo.url}>
-            <img
-              src={logo.src}
-              alt={logo.alt}
-              title={logo.title}
-              className="h-10 dark:invert"
-            />
-          </a>
+          <Link href={logo.url} className="text-2xl font-bold text-green-700">
+           Mero Health
+          </Link>
           <form onSubmit={onSubmit} className="min-w-sm border-muted bg-background flex w-full max-w-sm flex-col items-center gap-y-4 rounded-md border px-6 py-8 shadow-md">
             {heading && <h1 className="text-xl font-semibold">{heading}</h1>}
             <Input
@@ -65,7 +62,10 @@ const Login1 = ({
               className="text-sm"
               required
             />
-            <Button disabled={isLoading} type="submit" className="w-full">
+            <p onClick={() => setShowForgotPassword(true)} className="self-end text-xs text-black hover:underline cursor-pointer">
+              Forgot Password?
+            </p>
+            <Button disabled={isLoading} type="submit" className="w-full cursor-pointer">
              {isLoading ? "Submitting" : buttonText}
             </Button>
           </form>

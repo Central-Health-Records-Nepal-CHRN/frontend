@@ -1,5 +1,4 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -113,7 +112,7 @@ export default function Register() {
           name: data.fullName,
           email: data.email,
           password: data.password,
-          callbackURL: "http://localhost:3000/auth/login",
+          callbackURL: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/login`,
         },
         {
           onSuccess: (ctx) => {

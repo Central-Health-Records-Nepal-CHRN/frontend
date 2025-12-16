@@ -41,7 +41,7 @@ export function ForgotPassword({
     await authClient.requestPasswordReset(
       {
         ...data,
-        redirectTo: "http://localhost:3000/auth/reset-password",
+        redirectTo: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/reset-password`,
       },
       {
         onError: (ctx:any) => {

@@ -33,7 +33,7 @@ export function EmailVerification({
       console.log("Resending to email:", emailD);
       const { error } = await authClient.sendVerificationEmail({
         email: emailD,
-        callbackURL: "localhost:3000/auth/login",
+        callbackURL: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/login`,
       });
       if (error) {
         throw toast.error(error.message);

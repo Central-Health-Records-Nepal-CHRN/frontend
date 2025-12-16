@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 
 const Header = () => {
@@ -8,40 +8,51 @@ const Header = () => {
   const [showRegisterDropdown, setShowRegisterDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+   const scrollToSection = (id: string) => {
+  const section = document.getElementById(id);
+  if (!section) return;
+
+  section.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+};
+
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-[#b4decf]/30">
       <nav className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#0e9e6e] to-[#093627] rounded-xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300">
+            <div className="w-10 h-10 bg-linear-to-br from-[#0e9e6e] to-[#093627] rounded-xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300">
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-[#093627] to-[#0e9e6e] bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-linear-to-r from-[#093627] to-[#0e9e6e] bg-clip-text text-transparent">
               Mero Health
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-[#093627] hover:text-[#0e9e6e] font-medium transition-colors duration-200 relative group">
+            <p  className="text-[#093627] hover:text-[#0e9e6e] font-medium transition-colors duration-200 relative group cursor-pointer" onClick={() => scrollToSection('home')}>
               Home
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0e9e6e] group-hover:w-full transition-all duration-300"></span>
-            </Link>
-            <Link href="/services" className="text-[#093627] hover:text-[#0e9e6e] font-medium transition-colors duration-200 relative group">
+            </p>
+            <p className="text-[#093627] hover:text-[#0e9e6e] font-medium transition-colors duration-200 relative group cursor-pointer" onClick={() => scrollToSection('services')}>
               Services
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0e9e6e] group-hover:w-full transition-all duration-300"></span>
-            </Link>
-            <Link href="/blogs" className="text-[#093627] hover:text-[#0e9e6e] font-medium transition-colors duration-200 relative group">
+            </p>
+            <p  className="text-[#093627] hover:text-[#0e9e6e] font-medium transition-colors duration-200 relative group cursor-pointer" onClick={() => scrollToSection('blogpreview')} >
               Blogs
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0e9e6e] group-hover:w-full transition-all duration-300"></span>
-            </Link>
-            <Link href="/contact" className="text-[#093627] hover:text-[#0e9e6e] font-medium transition-colors duration-200 relative group">
+            </p>
+            <p className="text-[#093627] hover:text-[#0e9e6e] font-medium transition-colors duration-200 relative group cursor-pointer" onClick={() => scrollToSection('contact')}>
               Contact
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0e9e6e] group-hover:w-full transition-all duration-300"></span>
-            </Link>
+            </p>
           </div>
 
           {/* Auth Buttons */}
@@ -53,7 +64,7 @@ const Header = () => {
                   setShowLoginDropdown(!showLoginDropdown);
                   setShowRegisterDropdown(false);
                 }}
-                className="px-5 py-2.5 text-[#093627] font-semibold hover:text-[#0e9e6e] transition-colors duration-200 flex items-center gap-2"
+                className="px-5 py-2.5 text-[#093627] font-semibold hover:text-[#0e9e6e] transition-colors duration-200 flex items-center gap-2 cursor-pointer"
               >
                 Login
                 <svg className={`w-4 h-4 transition-transform duration-200 ${showLoginDropdown ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -64,8 +75,8 @@ const Header = () => {
               {showLoginDropdown && (
                 <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-2xl shadow-2xl border border-[#b4decf]/30 overflow-hidden animate-fade-in">
                   <Link
-                    href="/login/patient"
-                    className="block px-6 py-3 text-[#093627] hover:bg-[#b4decf]/20 transition-colors duration-200 flex items-center gap-3"
+                    href="auth/patient/login"
+                    className="px-6 py-3 text-[#093627] hover:bg-[#b4decf]/20 transition-colors duration-200 flex items-center gap-3"
                   >
                     <svg className="w-5 h-5 text-[#0e9e6e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -73,8 +84,8 @@ const Header = () => {
                     <span className="font-medium">Patient Login</span>
                   </Link>
                   <Link
-                    href="/login/provider"
-                    className="block px-6 py-3 text-[#093627] hover:bg-[#b4decf]/20 transition-colors duration-200 flex items-center gap-3 border-t border-[#b4decf]/30"
+                    href="auth/provider/login"
+                    className="px-6 py-3 text-[#093627] hover:bg-[#b4decf]/20 transition-colors duration-200 flex items-center gap-3 border-t border-[#b4decf]/30"
                   >
                     <svg className="w-5 h-5 text-[#0e9e6e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -92,7 +103,7 @@ const Header = () => {
                   setShowRegisterDropdown(!showRegisterDropdown);
                   setShowLoginDropdown(false);
                 }}
-                className="px-5 py-2.5 bg-gradient-to-r from-[#0e9e6e] to-[#093627] text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center gap-2"
+                className="px-5 py-2.5 bg-linear-to-r from-[#0e9e6e] to-[#093627] text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center gap-2 cursor-pointer"
               >
                 Register
                 <svg className={`w-4 h-4 transition-transform duration-200 ${showRegisterDropdown ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,8 +114,8 @@ const Header = () => {
               {showRegisterDropdown && (
                 <div className="absolute top-full right-0 mt-2 w-52 bg-white rounded-2xl shadow-2xl border border-[#b4decf]/30 overflow-hidden animate-fade-in">
                   <Link
-                    href="/register/patient"
-                    className="block px-6 py-3 text-[#093627] hover:bg-[#b4decf]/20 transition-colors duration-200 flex items-center gap-3"
+                    href="auth/patient/register"
+                    className="px-6 py-3 text-[#093627] hover:bg-[#b4decf]/20 transition-colors duration-200 flex items-center gap-3"
                   >
                     <svg className="w-5 h-5 text-[#0e9e6e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
@@ -112,8 +123,8 @@ const Header = () => {
                     <span className="font-medium">Register as Patient</span>
                   </Link>
                   <Link
-                    href="/register/provider"
-                    className="block px-6 py-3 text-[#093627] hover:bg-[#b4decf]/20 transition-colors duration-200 flex items-center gap-3 border-t border-[#b4decf]/30"
+                    href="auth/provider/register"
+                    className="px-6 py-3 text-[#093627] hover:bg-[#b4decf]/20 transition-colors duration-200 flex items-center gap-3 border-t border-[#b4decf]/30"
                   >
                     <svg className="w-5 h-5 text-[#0e9e6e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -170,10 +181,10 @@ const Header = () => {
                 
                 <div>
                   <p className="text-sm font-semibold text-[#093627] mb-2">Register</p>
-                  <Link href="/register/patient" className="block px-4 py-2 text-white bg-gradient-to-r from-[#0e9e6e] to-[#093627] rounded-lg mb-2">
+                  <Link href="/register/patient" className="block px-4 py-2 text-white bg-linear-to-r from-[#0e9e6e] to-[#093627] rounded-lg mb-2">
                     Register as Patient
                   </Link>
-                  <Link href="/register/provider" className="block px-4 py-2 text-white bg-gradient-to-r from-[#0e9e6e] to-[#093627] rounded-lg">
+                  <Link href="/register/provider" className="block px-4 py-2 text-white bg-linear-to-r from-[#0e9e6e] to-[#093627] rounded-lg">
                     Register as Provider
                   </Link>
                 </div>

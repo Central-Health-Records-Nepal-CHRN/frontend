@@ -1,8 +1,7 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+
 
 const BlogPreview = () => {
   const blogs = [
@@ -39,9 +38,9 @@ const BlogPreview = () => {
   ];
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section id='blogpreview' className="py-24 bg-white relative overflow-hidden">
       {/* Background Decoration */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#b4decf]/10 to-transparent pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-linear-to-l from-[#b4decf]/10 to-transparent pointer-events-none"></div>
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Section Header */}
@@ -54,7 +53,7 @@ const BlogPreview = () => {
             
             <h2 className="text-4xl lg:text-5xl font-bold text-[#093627]">
               From Our{' '}
-              <span className="bg-gradient-to-r from-[#0e9e6e] to-[#093627] bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-[#0e9e6e] to-[#093627] bg-clip-text text-transparent">
                 Blog
               </span>
             </h2>
@@ -83,8 +82,8 @@ const BlogPreview = () => {
               className="group bg-white rounded-3xl overflow-hidden border border-[#b4decf]/30 hover:border-[#0e9e6e]/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             >
               {/* Image */}
-              <div className="relative h-48 bg-gradient-to-br from-[#b4decf]/20 to-[#0e9e6e]/10 overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${blog.gradient} opacity-80 group-hover:opacity-60 transition-opacity`}></div>
+              <div className="relative h-48 bg-linear-to-br from-[#b4decf]/20 to-[#0e9e6e]/10 overflow-hidden">
+                <div className={`absolute inset-0 bg-linear-to-br ${blog.gradient} opacity-80 group-hover:opacity-60 transition-opacity`}></div>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <svg className="w-16 h-16 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -113,7 +112,7 @@ const BlogPreview = () => {
 
                 <div className="flex items-center justify-between pt-4 border-t border-[#b4decf]/30">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#0e9e6e] to-[#093627] rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                    <div className="w-10 h-10 bg-linear-to-br from-[#0e9e6e] to-[#093627] rounded-full flex items-center justify-center text-white font-semibold text-sm">
                       {blog.author.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
@@ -132,7 +131,7 @@ const BlogPreview = () => {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="mt-20 bg-gradient-to-br from-[#0e9e6e] to-[#093627] rounded-3xl p-8 lg:p-12 text-white">
+        <div className="mt-20 bg-linear-to-br from-[#0e9e6e] to-[#093627] rounded-3xl p-8 lg:p-12 text-white">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full font-medium text-sm border border-white/20">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

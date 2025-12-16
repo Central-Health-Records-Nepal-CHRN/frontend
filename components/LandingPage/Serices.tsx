@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
 
 const Services = () => {
@@ -74,7 +73,7 @@ const Services = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-[#b4decf]/10 relative overflow-hidden">
+    <section id="services" className="py-24 bg-linear-to-b from-white to-[#b4decf]/10 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -93,7 +92,7 @@ const Services = () => {
           
           <h2 className="text-4xl lg:text-5xl font-bold text-[#093627]">
             Comprehensive Health Management{' '}
-            <span className="bg-gradient-to-r from-[#0e9e6e] to-[#093627] bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-[#0e9e6e] to-[#093627] bg-clip-text text-transparent">
               Platform
             </span>
           </h2>
@@ -113,7 +112,7 @@ const Services = () => {
               style={{ animationDelay: service.delay }}
             >
               {/* Icon */}
-              <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+              <div className={`w-16 h-16 bg-linear-to-br ${service.color} rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
                 {service.icon}
               </div>
 
@@ -144,7 +143,7 @@ const Services = () => {
         <div className="mt-16 text-center">
           <Link
             href="/services"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#0e9e6e] to-[#093627] text-white font-semibold rounded-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-[#0e9e6e] to-[#093627] text-white font-semibold rounded-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
             View All Services
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

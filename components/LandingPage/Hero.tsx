@@ -1,19 +1,13 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-[#b4decf]/10 to-white pt-20">
+    <section id="home" className="relative  flex items-center justify-center bg-linear-to-br from-white via-[#b4decf]/10 to-white pt-0 md:pt-20 lg:pt-0">
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#b4decf]/20 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#0e9e6e]/10 rounded-full blur-3xl animate-float-delayed"></div>
-        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-[#093627]/5 rounded-full blur-2xl animate-float-slow"></div>
-      </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 py-20">
+      <div className="relative max-w-7xl mx-auto px-6 md:py-20 lg:pt-30">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8 animate-slide-in-left">
@@ -24,7 +18,7 @@ const Hero = () => {
 
             <h1 className="text-5xl lg:text-7xl font-bold text-[#093627] leading-tight">
               Take Control of Your{' '}
-              <span className="bg-gradient-to-r from-[#0e9e6e] to-[#093627] bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-[#0e9e6e] to-[#093627] bg-clip-text text-transparent">
                 Health Journey
               </span>
             </h1>
@@ -37,7 +31,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link
                 href="/register/patient"
-                className="group px-8 py-4 bg-gradient-to-r from-[#0e9e6e] to-[#093627] text-white font-semibold rounded-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                className="group px-8 py-4 bg-linear-to-r from-[#0e9e6e] to-[#093627] text-white font-semibold rounded-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 Get Started Free
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -80,7 +74,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-white rounded-3xl shadow-2xl border border-[#b4decf]/30 p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
                 <div className="space-y-6">
                   {/* Health Record Card */}
-                  <div className="bg-gradient-to-br from-[#b4decf]/20 to-[#0e9e6e]/10 rounded-2xl p-6 border border-[#0e9e6e]/20">
+                  <div className="bg-linear-to-br from-[#b4decf]/20 to-[#0e9e6e]/10 rounded-2xl p-6 border border-[#0e9e6e]/20">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 bg-[#0e9e6e] rounded-xl flex items-center justify-center">
                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,9 +97,9 @@ const Hero = () => {
                   </div>
 
                   {/* AI Summary Card */}
-                  <div className="bg-gradient-to-br from-[#093627]/5 to-[#0e9e6e]/5 rounded-2xl p-6 border border-[#093627]/10">
+                  <div className="bg-linear-to-br from-[#093627]/5 to-[#0e9e6e]/5 rounded-2xl p-6 border border-[#093627]/10">
                     <div className="flex items-start gap-3 mb-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-[#0e9e6e] to-[#093627] rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 bg-linear-to-br from-[#0e9e6e] to-[#093627] rounded-lg flex items-center justify-center shrink-0">
                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
@@ -123,7 +117,7 @@ const Hero = () => {
 
                   {/* Medication Reminder */}
                   <div className="bg-[#0e9e6e]/10 rounded-2xl p-4 border border-[#0e9e6e]/20 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-[#0e9e6e] rounded-full flex items-center justify-center flex-shrink-0 animate-pulse">
+                    <div className="w-10 h-10 bg-[#0e9e6e] rounded-full flex items-center justify-center shrink-0 animate-pulse">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>

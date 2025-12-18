@@ -1,3 +1,4 @@
+//main layout
 import type { Metadata } from "next";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";

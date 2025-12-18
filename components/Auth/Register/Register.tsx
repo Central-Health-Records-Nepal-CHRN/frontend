@@ -112,7 +112,7 @@ export default function Register() {
           name: data.fullName,
           email: data.email,
           password: data.password,
-          callbackURL: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/login`,
+          callbackURL: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/email-verified`,
         },
         {
           onSuccess: (ctx) => {

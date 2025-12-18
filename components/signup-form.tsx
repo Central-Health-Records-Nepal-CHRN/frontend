@@ -73,7 +73,7 @@ export function SignupForm({form, onSubmit, isLoading, ...props}: SignupFormProp
                 <Button type="submit" className="cursor-pointer" disabled={isLoading}>{isLoading ? "Creating Account ..." : "Create Account"}</Button>
                 
                 <FieldDescription className="px-6 text-center">
-                  Already have an account? <Link href="/auth/login">Sign in</Link>
+                  Already have an account? <Link href="/auth/patient/login">Sign in</Link>
                 </FieldDescription>
               </Field>
             </FieldGroup>

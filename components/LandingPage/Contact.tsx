@@ -58,7 +58,7 @@ const Contact = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[#b4decf]/10 to-white relative overflow-hidden">
+    <section id="contact" className="py-24 bg-linear-to-b from-[#b4decf]/10 to-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -76,7 +76,7 @@ const Contact = () => {
           
           <h2 className="text-4xl lg:text-5xl font-bold text-[#093627]">
             We'd Love to{' '}
-            <span className="bg-gradient-to-r from-[#0e9e6e] to-[#093627] bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-[#0e9e6e] to-[#093627] bg-clip-text text-transparent">
               Hear from You
             </span>
           </h2>
@@ -162,7 +162,7 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-gradient-to-r from-[#0e9e6e] to-[#093627] text-white font-semibold rounded-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full px-8 py-4 bg-linear-to-r from-[#0e9e6e] to-[#093627] text-white font-semibold rounded-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2"
               >
                 Send Message
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -182,7 +182,7 @@ const Contact = () => {
                   className="bg-white rounded-2xl p-6 border border-[#b4decf]/30 hover:border-[#0e9e6e]/50 hover:shadow-lg transition-all duration-300 group"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#0e9e6e] to-[#093627] rounded-xl flex items-center justify-center text-white flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 bg-linear-to-br from-[#0e9e6e] to-[#093627] rounded-xl flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform">
                       {item.icon}
                     </div>
                     <div>
@@ -196,7 +196,7 @@ const Contact = () => {
             </div>
 
             {/* Map/Location Card */}
-            <div className="bg-gradient-to-br from-[#0e9e6e] to-[#093627] rounded-3xl p-8 text-white">
+            <div className="bg-linear-to-br from-[#0e9e6e] to-[#093627] rounded-3xl p-8 text-white">
               <h3 className="text-2xl font-bold mb-4">Visit Our Office</h3>
               <p className="text-white/80 mb-6">
                 Stop by our office for a personal consultation. Our team is ready to discuss how 
@@ -205,19 +205,19 @@ const Contact = () => {
               
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span>Monday - Friday: 9:00 AM - 6:00 PM</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span>Saturday: 10:00 AM - 4:00 PM</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                   <span>Sunday: Closed</span>
@@ -240,7 +240,7 @@ const Contact = () => {
                   <a
                     key={social}
                     href="#"
-                    className="w-10 h-10 bg-[#b4decf]/20 hover:bg-gradient-to-br hover:from-[#0e9e6e] hover:to-[#093627] rounded-lg flex items-center justify-center text-[#093627] hover:text-white transition-all duration-300 group"
+                    className="w-10 h-10 bg-[#b4decf]/20 hover:bg-linear-to-br hover:from-[#0e9e6e] hover:to-[#093627] rounded-lg flex items-center justify-center text-[#093627] hover:text-white transition-all duration-300 group"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z" />

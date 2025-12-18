@@ -1,3 +1,4 @@
+"use client"
 import BlogPreview from "@/components/LandingPage/Blogpreview";
 import Contact from "@/components/LandingPage/Contact";
 import Features from "@/components/LandingPage/Features";
@@ -9,6 +10,7 @@ import Services from "@/components/LandingPage/Serices";
 
 
 export default function Home() {
+ 
   return (
     <main className="min-h-screen bg-white">
       <Header />

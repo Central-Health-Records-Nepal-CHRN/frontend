@@ -35,7 +35,7 @@ const Login1 = ({
   },
   buttonText = "Login",
   signupText = "Need an account?",
-  signupUrl = "/auth/register",
+  signupUrl = "/auth/patient/register",
 }: Login1Props) => {
   const {register, formState: {errors}} = form;
   return (

@@ -1,10 +1,10 @@
-import EmailVerified from "@/components/EmailVerified/EmailVerified"
+import EmailVerified from "@/components/Auth/email-verified";
 
 
 const page = () => {
-  return (
-    <EmailVerified />
-  )
+
+
+  return <EmailVerified  />;
 }
 
 export default page

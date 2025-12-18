@@ -33,7 +33,7 @@ export function EmailVerification({
       console.log("Resending to email:", emailD);
       const { error } = await authClient.sendVerificationEmail({
         email: emailD,
-        callbackURL: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/login`,
+        callbackURL: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/email-verified`,
       });
       if (error) {
         throw toast.error(error.message);
@@ -83,7 +83,7 @@ export function EmailVerification({
       </Button>
 
       <Link
-        href="/auth/login"
+        href="/auth/patient/login"
         onClick={() => setShowEmailVerification(false)}
         className="text-center text-sm text-white"
       >
